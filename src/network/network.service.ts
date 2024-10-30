@@ -3,6 +3,8 @@ import * as ping from 'ping';
 import * as dns from 'dns';
 import * as net from 'net';
 
+// hi
+
 @Injectable()
 export class NetworkService {
   private commonPorts = [80, 443, 22, 8080];
