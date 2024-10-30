@@ -9,7 +9,7 @@ export class NetworkController {
   async checkIPs(
     @Query('status') status: string,
     @Query('offset') offset: number = 0,
-    @Query('limit') limit: number = 20,
+    @Query('limit') limit: number = 5,
   ) {
     const ipList = [
       ...Array(Number(limit))
