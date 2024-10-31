@@ -1,9 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as ping from 'ping';
-import * as dns from 'dns';
+// import * as dns from 'dns';
 import * as net from 'net';
-
-// hi
 
 @Injectable()
 export class NetworkService {
@@ -38,25 +36,25 @@ export class NetworkService {
   }> {
     const res = await ping.promise.probe(ip);
 
-    let hostname: string | undefined = ip;
-    try {
-      const hostnames = await dns.promises.reverse(ip);
-      hostname = hostnames[0];
-    } catch (err) {
-      console.warn(`Could not resolve hostname for IP ${ip}:`, err.message);
-    }
+    // let hostname: string | undefined = ip;
+    // try {
+    //   const hostnames = await dns.promises.reverse(ip);
+    //   hostname = hostnames[0];
+    // } catch (err) {
+    //   console.warn(`Could not resolve hostname for IP ${ip}:`, err.message);
+    // }
 
-    const openPorts: number[] = [];
-    for (const port of this.commonPorts) {
-      const isOpen = await this.checkPortStatus(ip, port);
-      if (isOpen) openPorts.push(port);
-    }
+    // const openPorts: number[] = [];
+    // for (const port of this.commonPorts) {
+    //   const isOpen = await this.checkPortStatus(ip, port);
+    //   if (isOpen) openPorts.push(port);
+    // }
 
     return {
       ip: ip,
       alive: res.alive,
-      hostname: hostname,
-      openPorts: openPorts.length ? openPorts : undefined,
+      // hostname: hostname,
+      // openPorts: openPorts.length ? openPorts : undefined,
     };
   }
 
